@@ -1,4 +1,7 @@
-https://spaceconverter.blogspot.com
+You have 3 options:
+- https://spaceconverter.blogspot.com (may not work)
+- [spaceconverter.html](https://raw.githubusercontent.com/mortyobnoxious/TWspaceDynamic/main/spaceconverter.html) (download and open with a browser)
+- [TWspaceDynamic.py](https://raw.githubusercontent.com/mortyobnoxious/TWspaceDynamic/main/TWspaceDynamic.py) (requires Python)
 
 # TWspaceDynamic
 #### Twitter Space Dynamic URL to Playlist URL
