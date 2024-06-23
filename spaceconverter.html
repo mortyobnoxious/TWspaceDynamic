@@ -87,7 +87,7 @@ document.addEventListener('click', e => {
         }
         getMaster.innerHTML  = `<span class="loading"></span>`;
         getXML(masterUrl, true).then(r => {
-            let data = r.split('audio-space/')[1].replace(/\n/g, '');
+            let data = r.replace(/[\s\S]*(playlist_\d+\.m3u8)[\s\S]*/, '$1');
             let playUrl = dynamicUrl.replace('dynamic_playlist.m3u8', data).replace('type=live', 'type=replay');
             resultDom(`${playUrl}`, `success`, `error`)
             getMaster.innerHTML = `Get Master URL`;
