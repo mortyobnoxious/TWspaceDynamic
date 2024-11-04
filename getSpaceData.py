@@ -6,7 +6,7 @@ auth_token = input("Enter your 'auth_token' cookie value: ").strip()
 
 def get_guest():
     headers = {"authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs=1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA"}
-    return requests.post("https://api.twitter.com/1.1/guest/activate.json", headers=headers, timeout=30).json().get("guest_token")
+    return requests.post("https://api.x.com/1.1/guest/activate.json", headers=headers, timeout=30).json().get("guest_token")
 
 def fetch_space_data(id, ct0, auth):
     params = {
@@ -50,7 +50,7 @@ def fetch_space_data(id, ct0, auth):
         "x-csrf-token": ct0,
     }
     cookies = {'ct0': ct0, 'auth_token': auth}
-    return requests.get("https://api.twitter.com/graphql/xjTKygiBMpX44KU8ywLohQ/AudioSpaceById", params=params, headers=headers, cookies=cookies).json()['data']['audioSpace']['metadata']
+    return requests.get("https://api.x.com/graphql/xjTKygiBMpX44KU8ywLohQ/AudioSpaceById", params=params, headers=headers, cookies=cookies).json()['data']['audioSpace']['metadata']
 
 def get_stream_url(id, ct0, auth):
     space = fetch_space_data(id, ct0, auth)
@@ -59,7 +59,7 @@ def get_stream_url(id, ct0, auth):
 
     headers = {"authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs=1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA", "cookie": f"auth_token={auth}"}
     media_key = space["media_key"]
-    response = requests.get(f"https://twitter.com/i/api/1.1/live_video_stream/status/{media_key}", headers=headers, timeout=30)
+    response = requests.get(f"https://x.com/i/api/1.1/live_video_stream/status/{media_key}", headers=headers, timeout=30)
     location = response.json()["source"]["location"]
     prefix = "Master URL: " if "type=replay" in location else "Dynamic URL: "
     return prefix + response.json()["source"]["location"]
